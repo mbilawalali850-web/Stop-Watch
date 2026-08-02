@@ -40,6 +40,8 @@ window.addEventListener('keydown', (event) => {
         timerBox.style.borderColor = "#76a5f1";
         pauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         pauseBtn.style.border = "2px solid #0400ff";
+        stopWatchBtn.style.borderColor = "none";
+        stopWatchBtn.style.backgroundColor = "#a8c7fa";
         isRunning = true;
         startTimer();
     } else if (event.code === 'Space' && isRunning){
@@ -52,6 +54,8 @@ window.addEventListener('keydown', (event) => {
         stopWatchRingTone.pause();
         isRunning = false;
         pauseBtn.style.border = "2px solid #f7af13";
+        stopWatchBtn.style.borderColor = "#f7af13";
+        stopWatchBtn.style.backgroundColor = "#f1ca76";
     }
 })
 
@@ -77,6 +81,8 @@ pauseBtn.addEventListener('click', () => {
         pauseBtn.style.backgroundColor = "#f1ca76";
         resetBtn.style.backgroundColor = "#f1ca76";
         body.style.backgroundColor = "hsla(45, 100%, 92%, 0.99)";
+        stopWatchBtn.style.borderColor = "#f7af13";
+        stopWatchBtn.style.backgroundColor = "#f1ca76";
         timerBox.style.borderColor = "grey";
         pauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         isRunning = false;
@@ -87,6 +93,8 @@ pauseBtn.addEventListener('click', () => {
         resetBtn.style.backgroundColor = "#76a5f1";
         body.style.backgroundColor = "rgb(213, 230, 245)";
         timerBox.style.borderColor = "#76a5f1";
+        stopWatchBtn.style.borderColor = "none";
+        stopWatchBtn.style.backgroundColor = "#a8c7fa";
         pauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         isRunning = true;
         stopWatchRingTone.play();
@@ -102,6 +110,8 @@ resetBtn.addEventListener("click", () => {
     resetBtn.style.backgroundColor = "#76a5f1";
     body.style.backgroundColor = "rgb(213, 230, 245)";
     timerBox.style.borderColor = "#76a5f1";
+    stopWatchBtn.style.borderColor = "none";
+    stopWatchBtn.style.backgroundColor = "#a8c7fa";
     pauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
     timerBox.innerHTML = "00:00"
     isRunning = false;
