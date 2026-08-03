@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Bentham;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body {
@@ -26,9 +26,9 @@ nav {
     font-weight: 800;
     font-size: 1.5rem;
     margin-left: 2rem;
-    height: 2.78rem;
-    width: 11rem;
-    border-radius: 20px;
+    height: 3em;
+    width: 13rem;
+    border-radius: 40px;
     padding-right: 0.5rem;
 }
 
@@ -104,4 +104,18 @@ footer {
 
 .reset-btn {
     margin-left: 1rem;
+}
+
+.mini-ball {
+  transform-origin: 300.35px 252.19px;
+  animation: spinAround 4s linear infinite;
+}
+
+@keyframes spinAround {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

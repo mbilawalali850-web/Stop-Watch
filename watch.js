@@ -4,6 +4,8 @@ let resetBtn = document.querySelector(".reset-btn");
 let timerBox = document.querySelector(".timer-box");
 let body = document.querySelector("body");
 let stopWatchBtn = document.querySelector(".swatch-btn");
+let circle = document.querySelector(".circle");
+let miniBall = document.querySelector(".mini-ball");
 let volumeBtn = document.querySelector(".volume-btn");
 let seconds = 0;
 let timerId = null;
@@ -16,7 +18,10 @@ playBtn.addEventListener("click", () => {
     playBtn.style.display = 'none';
     pauseBtn.style.display = 'block';
     resetBtn.style.display = 'block';
-    timerBox.style.borderColor = "#76a5f1"   
+    timerBox.style.borderColor = "#76a5f1";
+    circle.style.stroke = "#76a5f1";
+    miniBall.style.fill = "#0062ff";
+    miniBall.style.animationPlayState = "running";
     stopWatchRingTone.play().catch(error => {
         console.log("Error: ", error);
     });
@@ -40,8 +45,16 @@ window.addEventListener('keydown', (event) => {
         timerBox.style.borderColor = "#76a5f1";
         pauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         pauseBtn.style.border = "2px solid #0400ff";
-        stopWatchBtn.style.borderColor = "none";
-        stopWatchBtn.style.backgroundColor = "#a8c7fa";
+        stopWatchBtn.style.backgroundColor = "#76a5f1";
+        circle.style.stroke = "#76a5f1";
+        miniBall.style.fill = "#0062ff";
+        miniBall.style.animationPlayState = "running";
+        volumeBtn.addEventListener('mouseover', () => {
+            volumeBtn.style.backgroundColor = '#76a5f1';
+        })
+        volumeBtn.addEventListener('mouseout', () => {
+            volumeBtn.style.backgroundColor = 'transparent';
+        })
         isRunning = true;
         startTimer();
     } else if (event.code === 'Space' && isRunning){
@@ -50,12 +63,20 @@ window.addEventListener('keydown', (event) => {
         resetBtn.style.backgroundColor = "#f1ca76";
         body.style.backgroundColor = "hsla(45, 100%, 92%, 0.99)";
         timerBox.style.borderColor = "grey";
+        stopWatchBtn.style.backgroundColor = "#f7c559";
+        circle.style.stroke = "grey";
+        miniBall.style.fill = "#7e5a0d";
+        miniBall.style.animationPlayState = "paused";
+        volumeBtn.addEventListener('mouseover', () => {
+            volumeBtn.style.backgroundColor = '#f1ca76';
+        })
+        volumeBtn.addEventListener('mouseout', () => {
+            volumeBtn.style.backgroundColor = 'transparent';
+        })
         pauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         stopWatchRingTone.pause();
         isRunning = false;
         pauseBtn.style.border = "2px solid #f7af13";
-        stopWatchBtn.style.borderColor = "#f7af13";
-        stopWatchBtn.style.backgroundColor = "#f1ca76";
     }
 })
 
@@ -81,9 +102,18 @@ pauseBtn.addEventListener('click', () => {
         pauseBtn.style.backgroundColor = "#f1ca76";
         resetBtn.style.backgroundColor = "#f1ca76";
         body.style.backgroundColor = "hsla(45, 100%, 92%, 0.99)";
-        stopWatchBtn.style.borderColor = "#f7af13";
-        stopWatchBtn.style.backgroundColor = "#f1ca76";
+        stopWatchBtn.style.backgroundColor = "#f7c559";
         timerBox.style.borderColor = "grey";
+        pauseBtn.style.borderColor = "transparent";
+        circle.style.stroke = "grey";
+        miniBall.style.fill = "#7e5a0d";
+        miniBall.style.animationPlayState = "paused";
+        volumeBtn.addEventListener('mouseover', () => {
+            volumeBtn.style.backgroundColor = '#f1ca76';
+        })
+        volumeBtn.addEventListener('mouseout', () => {
+            volumeBtn.style.backgroundColor = 'transparent';
+        })
         pauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         isRunning = false;
         stopWatchRingTone.pause();
@@ -93,8 +123,17 @@ pauseBtn.addEventListener('click', () => {
         resetBtn.style.backgroundColor = "#76a5f1";
         body.style.backgroundColor = "rgb(213, 230, 245)";
         timerBox.style.borderColor = "#76a5f1";
-        stopWatchBtn.style.borderColor = "none";
-        stopWatchBtn.style.backgroundColor = "#a8c7fa";
+        stopWatchBtn.style.backgroundColor = "#76a5f1";
+        pauseBtn.style.borderColor = "transparent";
+        circle.style.stroke = "#76a5f1";
+        miniBall.style.fill = "#0062ff";
+        miniBall.style.animationPlayState = "running";
+        volumeBtn.addEventListener('mouseover', () => {
+            volumeBtn.style.backgroundColor = '#76a5f1';
+        })
+        volumeBtn.addEventListener('mouseout', () => {
+            volumeBtn.style.backgroundColor = 'transparent';
+        })
         pauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         isRunning = true;
         stopWatchRingTone.play();
@@ -110,8 +149,17 @@ resetBtn.addEventListener("click", () => {
     resetBtn.style.backgroundColor = "#76a5f1";
     body.style.backgroundColor = "rgb(213, 230, 245)";
     timerBox.style.borderColor = "#76a5f1";
-    stopWatchBtn.style.borderColor = "none";
-    stopWatchBtn.style.backgroundColor = "#a8c7fa";
+    stopWatchBtn.style.backgroundColor = "#76a5f1";
+    miniBall.style.fill = "none";
+    circle.style.stroke = "none";
+    miniBall.style.animationPlayState = "paused";
+    pauseBtn.style.borderColor = "transparent";
+    volumeBtn.addEventListener('mouseover', () => {
+        volumeBtn.style.backgroundColor = '#76a5f1';
+    })
+    volumeBtn.addEventListener('mouseout', () => {
+        volumeBtn.style.backgroundColor = 'transparent';
+    })
     pauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
     timerBox.innerHTML = "00:00"
     isRunning = false;
@@ -132,4 +180,3 @@ if (!isMuted) {
     volumeBtn.querySelector("i").classList.replace('fa-volume-xmark', 'fa-volume-high');
 }
 })
-
